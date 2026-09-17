@@ -132,10 +132,10 @@ export function HomeHero() {
 export function CategoryRow() {
   const categoryImages: Record<string, string | undefined> = {
     skin: getProductByHandle("luxe-pink-tallow-face-cream")?.image,
-    lips: getProductByHandle("french-vanilla-lip-balm")?.image,
+    lips: getProductByHandle("calendula-lip-salve")?.image,
     hair: getProductByHandle("rosemary-hair-serum")?.image,
-    men: getProductByHandle("ageless-spf-30-men-in-white")?.image,
-    body: getProductByHandle("pefume-body-oil")?.image,
+    men: getProductByHandle("rev-beard-balm")?.image,
+    body: getProductByHandle("chamomile-body-balm")?.image,
     spf: getProductByHandle("ageless-spf-30-men-in-white")?.image,
   };
 
