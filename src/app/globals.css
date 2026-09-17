@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+:root {
+  --blush: #f6e4e4;
+  --blush-deep: #e8c9c9;
+  --rose: #b57a7a;
+  --rose-deep: #8f5a5a;
+  --mauve: #9a6b6b;
+  --ink: #2c2424;
+  --ink-soft: #5a4d4d;
+  --paper: #fbf7f5;
+  --cream: #f7f0ec;
+  --line: color-mix(in srgb, var(--ink) 10%, transparent);
+  --glow-blush: color-mix(in srgb, var(--blush-deep) 55%, transparent);
+}
+
+@theme inline {
+  --color-blush: var(--blush);
+  --color-blush-deep: var(--blush-deep);
+  --color-rose: var(--rose);
+  --color-rose-deep: var(--rose-deep);
+  --color-mauve: var(--mauve);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
+  --color-cream: var(--cream);
+  --color-line: var(--line);
+  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-figtree);
+  --font-script: var(--font-script);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--rose) 28%, white);
+  color: var(--ink);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes bloom {
+  0%,
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.08) translate3d(2%, -1%, 0);
+    opacity: 0.8;
+  }
+}
+
+@keyframes script-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) rotate(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-2deg);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+}
+
+.animate-fade-up-delay-3 {
+  animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
+}
+
+.animate-float {
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+.animate-bloom {
+  animation: bloom 12s ease-in-out infinite;
+}
+
+.animate-script {
+  animation: script-in 1s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+}
+
+.hero-wash {
+  background:
+    radial-gradient(ellipse 70% 55% at 78% 42%, var(--glow-blush), transparent 60%),
+    radial-gradient(ellipse 45% 40% at 12% 80%, color-mix(in srgb, white 70%, transparent), transparent 55%),
+    linear-gradient(165deg, #f8eaea 0%, #f4dfdf 45%, #efe4df 100%);
+}
+
+.section-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--line),
+    color-mix(in srgb, var(--rose) 35%, transparent),
+    var(--line),
+    transparent
+  );
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-up,
+  .animate-fade-up-delay-1,
+  .animate-fade-up-delay-2,
+  .animate-fade-up-delay-3,
+  .animate-float,
+  .animate-bloom,
+  .animate-script {
+    animation: none;
+  }
+}
